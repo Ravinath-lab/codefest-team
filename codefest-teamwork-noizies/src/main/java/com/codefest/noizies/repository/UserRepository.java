@@ -8,4 +8,5 @@ import com.codefest.noizies.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+	User findUserByUserId(int id);
 }

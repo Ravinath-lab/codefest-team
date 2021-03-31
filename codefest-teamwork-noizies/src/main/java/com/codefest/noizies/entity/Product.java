@@ -17,52 +17,53 @@ public class Product implements Serializable {
 
 	@Column(name="buying_price")
 	private double buyingPrice;
-
-	@Column(name="pro_id")
-	private int proId;
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="product_id")
 	private int productId;
-
+	
 	private double qty;
-
+	private String name;
+	
 	@Column(name="selling_price")
 	private double sellingPrice;
-
+	
 	@ManyToOne
 	@JoinColumn(name="product_category_id")
 	private ProductCategory productCategory;
 
-	
-	
 	public Product() {
 		super();
 	}
 
-	
-	public Product(double buyingPrice, int proId, int productId, double qty, double sellingPrice) {
+	public Product(double buyingPrice, int productId, double qty,String name, double sellingPrice) {
 		super();
 		this.buyingPrice = buyingPrice;
-		this.proId = proId;
 		this.productId = productId;
 		this.qty = qty;
+		this.name = name;
 		this.sellingPrice = sellingPrice;
 	}
 
-
-	public Product(double buyingPrice, int proId, int productId, double qty, double sellingPrice,
+	public Product(double buyingPrice, int productId, double qty,String name, double sellingPrice,
 			ProductCategory productCategory) {
 		super();
 		this.buyingPrice = buyingPrice;
-		this.proId = proId;
 		this.productId = productId;
 		this.qty = qty;
+		this.name = name;
 		this.sellingPrice = sellingPrice;
 		this.productCategory = productCategory;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public double getBuyingPrice() {
 		return buyingPrice;
@@ -70,14 +71,6 @@ public class Product implements Serializable {
 
 	public void setBuyingPrice(double buyingPrice) {
 		this.buyingPrice = buyingPrice;
-	}
-
-	public int getProId() {
-		return proId;
-	}
-
-	public void setProId(int proId) {
-		this.proId = proId;
 	}
 
 	public int getProductId() {

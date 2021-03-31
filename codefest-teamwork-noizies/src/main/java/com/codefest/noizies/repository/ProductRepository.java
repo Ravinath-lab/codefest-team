@@ -8,4 +8,5 @@ import com.codefest.noizies.entity.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
+	Product findProductByProductId(int id);
 }

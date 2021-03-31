@@ -17,6 +17,9 @@ import java.util.List;
 public class ProductCategory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	public static final int ACTIVE = 1;
+	public static final int DEACTIVE = 2;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="product_category_id")
@@ -26,6 +29,7 @@ public class ProductCategory implements Serializable {
 	private String description;
 
 	private String name;
+	private int status = ACTIVE;
 
 	//bi-directional many-to-one association to Product
 	@JsonIgnore
@@ -87,8 +91,13 @@ public class ProductCategory implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 }
