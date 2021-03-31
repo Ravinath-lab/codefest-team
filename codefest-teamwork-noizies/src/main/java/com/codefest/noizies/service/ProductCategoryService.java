@@ -23,6 +23,7 @@ public class ProductCategoryService {
 	}
 
 	public ProductCategory update(ProductCategory proC) {
+		System.out.println("on update");
 		ProductCategory pc = proCategoryRepo.findProductCategoryByProductCategoryId(proC.getProductCategoryId());
 		if(pc != null) {
 			if(proC.getName() != null && !proC.getName().trim().isEmpty()) {
@@ -45,5 +46,10 @@ public class ProductCategoryService {
 		}else {
 			return null;
 		}
+	}
+
+	public ProductCategory getCat(int id) {
+		ProductCategory pc = proCategoryRepo.findProductCategoryByProductCategoryId(id);
+		return pc;
 	}
 }

@@ -28,6 +28,11 @@ public class ProductCategoryController {
 	public List<ProductCategory> getAll(){
 		return proCategoryService.getAll();
 	}
+	
+	@GetMapping(path = "/get/{id}")
+	public ProductCategory getCat(@PathVariable int id){
+		return proCategoryService.getCat(id);
+	}
 		
 	@PostMapping(path = "/save")
 	public ProductCategory save(@RequestBody ProductCategory pc){

@@ -30,6 +30,11 @@ public class ProductController {
 		return productService.getAll();
 	}
 	
+	@GetMapping(path = "/get/{id}")
+	public Product getProduct(@PathVariable int id){
+		return productService.getProductById(id);
+	}
+	
 	@PostMapping(path = "/save")
 	public Product save(@RequestBody ProductDAO p){
 		return productService.save(p);

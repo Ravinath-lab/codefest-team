@@ -30,6 +30,11 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 	
+	@GetMapping(path = "/get/{id}")
+	public UserDTO getUser(@PathVariable int id){
+		return userService.getUserById(id);
+	}
+	
 	@PostMapping(path = "/save")
 	public UserDTO saveUser(@RequestBody User user) {
 		return userService.saveUser(user);

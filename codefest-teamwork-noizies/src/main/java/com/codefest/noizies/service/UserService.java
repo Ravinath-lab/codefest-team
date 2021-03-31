@@ -58,6 +58,7 @@ public class UserService {
 			User saveUser = userRepo.save(avbUser);
 			return convertUserToDTO(saveUser);
 		}else {
+			System.out.println("null user");
 			return null;
 		}
 	}
@@ -74,5 +75,10 @@ public class UserService {
 
 	public void deleteUser(int id) {
 		userRepo.deleteById(id);
+	}
+
+	public UserDTO getUserById(int id) {
+		User u = userRepo.findUserByUserId(id);
+		return convertUserToDTO(u);
 	}
 }

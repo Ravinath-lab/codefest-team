@@ -70,4 +70,9 @@ public class ProductService {
 		}
 		return p;
 	}
+
+	public Product getProductById(int id) {
+		Product pro = proRepo.findProductByProductId(id);
+		return pro;
+	}
 }
