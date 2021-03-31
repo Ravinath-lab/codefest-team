@@ -6,10 +6,253 @@
         <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="custom/css/myStyle.css" rel="stylesheet">
     </head>
-    <body>
-        
-        
-        
+    <body class="bg-light">
+        <div class="container-fluid bg-info p-2 justify-content-center align-content-center" style="min-height: 50px">
+            <div class="container"><h2 style="text-align: center">Codfest 2021 | Spring Boot Project</h2></div>
+        </div>
+        <div class="container">
+            <ul class="nav nav-pills mb-3 m-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">User</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Products</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Product Categories</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="row bg-white pt-2">
+                        <div class="col col-sm-2">
+                            <form>
+                                <h4>Register new User</h4>
+                                <div class="mb-3">
+                                  <label for="email" class="form-label">Email address</label>
+                                  <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp">
+                                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="pwd" class="form-label">Password</label>
+                                  <input type="password" class="form-control form-control-sm" id="pwd">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="username" class="form-label">Name</label>
+                                  <input type="text" class="form-control form-control-sm" id="username">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="mobile" class="form-label">Mobile</label>
+                                  <input type="tel" class="form-control form-control-sm" id="mobile">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="age" class="form-label">Age</label>
+                                  <input type="number" class="form-control form-control-sm" id="age">
+                                </div>
+                                <button type="button" class="btn btn-info btn-sm w-100" id="saveUser">Save User</button>
+                            </form>
+                        </div>
+                        
+                        <div class="col col-sm-8 border border-secondary">
+                            <h4 style="text-align: center">View all Users</h4>
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Mobile</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="userTbody">
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="col col-sm-2">
+                            <form>
+                                <h4>Update User</h4>
+                                <input type="hidden" id="uid"/>
+                                <div class="mb-3">
+                                  <label for="updateEmail" class="form-label">Email address</label>
+                                  <input type="email" class="form-control form-control-sm" id="updateEmail" aria-describedby="emailHelp">
+                                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="updatePwd" class="form-label">Password</label>
+                                  <input type="password" class="form-control form-control-sm" id="updatePwd">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="updateUsername" class="form-label">Name</label>
+                                  <input type="text" class="form-control form-control-sm" id="updateUsername">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="updateMobile" class="form-label">Mobile</label>
+                                  <input type="tel" class="form-control form-control-sm" id="updateMobile">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="updateAge" class="form-label">Age</label>
+                                  <input type="number" class="form-control form-control-sm" id="updateAge">
+                                </div>
+                                <button type="button" class="btn btn-warning btn-sm w-100" id="updateUser">Update User</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="row bg-white pt-2">
+                        <div class="col col-sm-2">
+                            <form>
+                                <h4>Register new Product</h4>
+                                <div class="mb-3">
+                                  <label for="pName" class="form-label">Name</label>
+                                  <input type="text" class="form-control form-control-sm" id="pName">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="buy" class="form-label">Buying Price</label>
+                                  <input type="number" class="form-control form-control-sm" id="buy">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="sell" class="form-label">Selling Price</label>
+                                  <input type="number" class="form-control form-control-sm" id="sell">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="qty" class="form-label">QTY</label>
+                                  <input type="number" class="form-control form-control-sm" id="qty">
+                                </div>
+                                <select class="form-select form-select-sm mb-3" id="catSelect" aria-label=".form-select-sm example">
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                                <button type="button" class="btn btn-info btn-sm w-100" id="savePro">Save Product</button>
+                            </form>
+                        </div>
+                        
+                        <div class="col col-sm-8 border border-secondary">
+                            <h4 style="text-align: center">View all Products</h4>
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Buying Price</th>
+                                    <th scope="col">Selling Price</th>
+                                    <th scope="col">QTY</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="proTbody">
+                                  <tr>
+                                    <td>1</td>
+                                    <td>Product 1</td>
+                                    <td>100</td>
+                                    <td>120</td>
+                                    <td>55</td>
+                                    <td>Category 1</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-warning" id="">Update</button>
+                                        <button type="button" class="btn btn-sm btn-danger" id="">Delete</button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="col col-sm-2">
+                            <form>
+                                <h4>Update Product</h4>
+                                <input type="hidden" id="proid"/>
+                                <div class="mb-3">
+                                  <label for="pUpdateName" class="form-label">Name</label>
+                                  <input type="text" class="form-control form-control-sm" id="pUpdateName">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="updateBuy" class="form-label">Buying Price</label>
+                                  <input type="number" class="form-control form-control-sm" id="updateBuy">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="updateSell" class="form-label">Selling Price</label>
+                                  <input type="number" class="form-control form-control-sm" id="updateSell">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="updateQty" class="form-label">QTY</label>
+                                  <input type="number" class="form-control form-control-sm" id="updateQty">
+                                </div>
+                                <select class="form-select form-select-sm mb-3" id="updateCatSelect" aria-label=".form-select-sm example">
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                                <button type="button" class="btn btn-info btn-sm w-100" id="updatePro">Update Product</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="row bg-white pt-2">
+                        <div class="col col-sm-2">
+                            <form>
+                                <h4>Register new Category</h4>
+                                <div class="mb-3">
+                                  <label for="cName" class="form-label">Name</label>
+                                  <input type="text" class="form-control form-control-sm" id="cName">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="cDescription" class="form-label">Description</label>
+                                  <textarea class="form-control form-control-sm" id="cDescription"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-info btn-sm w-100" id="cSave">Save Category</button>
+                            </form>
+                        </div>
+                        
+                        <div class="col col-sm-8 border border-secondary">
+                            <h4 style="text-align: center">View all Categories</h4>
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="catTbody">
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="col col-sm-2">
+                            <form>
+                                <h4>Update Category</h4>
+                                <input type="hidden" id="catid"/>
+                                <div class="mb-3">
+                                  <label for="cUpdateName" class="form-label">Name</label>
+                                  <input type="text" class="form-control form-control-sm" id="cUpdateName">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="cUpdateDescription" class="form-label">Description</label>
+                                  <textarea class="form-control form-control-sm" id="UpdateDescription"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-warning btn-sm w-100" id="cUpdate">Update Category</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="custom/js/myScript.js"></script>
