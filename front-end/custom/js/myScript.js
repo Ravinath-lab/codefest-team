@@ -1,3 +1,4 @@
+const host = "http://104.198.28.198:8080/";
 $(document).ready(function(){
     readCategory();
     readUsers();
@@ -18,7 +19,7 @@ $(document).ready(function(){
             "age":age.val()
         };
         var settings = {
-            "url": "http://localhost:8080/user/save",
+            "url": host+"user/save",
             "method": "POST",
             "timeout": 0,
             "headers": {
@@ -55,7 +56,7 @@ $(document).ready(function(){
             "age":age.val()
         };
         var settings = {
-            "url": "http://localhost:8080/user/update",
+            "url": host+"user/update",
             "method": "PUT",
             "timeout": 0,
             "headers": {
@@ -92,7 +93,7 @@ $(document).ready(function(){
             "categoryId":cat.val()
         };
         var settings = {
-            "url": "http://localhost:8080/product/save",
+            "url": host+"product/save",
             "method": "POST",
             "timeout": 0,
             "headers": {
@@ -129,7 +130,7 @@ $(document).ready(function(){
             "categoryId":cat.val()
         };
         var settings = {
-            "url": "http://localhost:8080/product/update",
+            "url": host+"product/update",
             "method": "PUT",
             "timeout": 0,
             "headers": {
@@ -159,7 +160,7 @@ $(document).ready(function(){
             "description":des.val()
         };
         var settings = {
-            "url": "http://localhost:8080/productCategory/save",
+            "url": host+"productCategory/save",
             "method": "POST",
             "timeout": 0,
             "headers": {
@@ -187,7 +188,7 @@ $(document).ready(function(){
             "description":des.val()
         };
         var settings = {
-            "url": "http://localhost:8080/productCategory/update",
+            "url": host+"productCategory/update",
             "method": "PUT",
             "timeout": 0,
             "headers": {
@@ -211,7 +212,7 @@ $(document).ready(function(){
 //User Script area=======================================================================
 function readUsers(){
     var settings = {
-        "url": "http://localhost:8080/user/getAll",
+        "url": host+"user/getAll",
         "method": "GET",
         "timeout": 0
       };
@@ -242,7 +243,7 @@ function loadUsers(data){
     $(".user-u").click(function(){
         var id = $(this).data("id");
         var settings = {
-            "url": "http://localhost:8080/user/get/"+id,
+            "url": host+"user/get/"+id,
             "method": "GET",
             "timeout": 0
           };
@@ -260,7 +261,7 @@ function loadUsers(data){
         var id = $(this).data("id");
         if(confirm("Do you really want to delete this")){
             var settings = {
-                "url": "http://localhost:8080/user/delete/"+id,
+                "url": host+"user/delete/"+id,
                 "method": "DELETE",
                 "timeout": 0
               };
@@ -281,7 +282,7 @@ function loadUsers(data){
 //product script area=====================================================================
 function readProducts(){
     var settings = {
-        "url": "http://localhost:8080/product/getAll",
+        "url": host+"product/getAll",
         "method": "GET",
         "timeout": 0
       };
@@ -312,7 +313,7 @@ function loadPros(data){
     $(".pro-u").click(function(){
         var id = $(this).data("id");
         var settings = {
-            "url": "http://localhost:8080/product/get/"+id,
+            "url": host+"product/get/"+id,
             "method": "GET",
             "timeout": 0
           };
@@ -331,7 +332,7 @@ function loadPros(data){
         var id = $(this).data("id");
         if(confirm("Do you really want to delete this")){
             var settings = {
-                "url": "http://localhost:8080/product/delete/"+id,
+                "url": host+"product/delete/"+id,
                 "method": "DELETE",
                 "timeout": 0
               };
@@ -351,7 +352,7 @@ function loadPros(data){
 //category script area=====================================================================
 function readCategory(){
     var settings = {
-        "url": "http://localhost:8080/productCategory/getAll",
+        "url": host+"productCategory/getAll",
         "method": "GET",
         "timeout": 0
       };
@@ -389,7 +390,7 @@ function loadCategories(data){
     $(".cat-u").click(function(){
         var id = $(this).data("id");
         var settings = {
-            "url": "http://localhost:8080/productCategory/get/"+id,
+            "url": host+"productCategory/get/"+id,
             "method": "GET",
             "timeout": 0
           };
@@ -405,7 +406,7 @@ function loadCategories(data){
         var id = $(this).data("id");
         if(confirm("Do you really want to delete this")){
             var settings = {
-                "url": "http://localhost:8080/productCategory/deactivate/"+id,
+                "url": host+"productCategory/deactivate/"+id,
                 "method": "PUT",
                 "timeout": 0
               };
