@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="custom/css/myStyle.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+        
+        <div class="container">
+            <div class="col-sm-3 mt-3 m-auto justify-content-center align-content-center border p-3 bg-white">
+                <form>
+                    <h3 class="align-items-center justify-content-center" style="text-align: center">Sign In</h3>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                      <label for="pwd" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="pwd">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="log">Login</button>
+                  </form>
+            </div>
+        </div>
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var token = window.localStorage.getItem("token");
+                if(token === null || token === ""){
+                    alert("null token");
+                    $("#log").click(function(){
+                    var un = $("#email").val();
+                    var pwd = $("#pwd").val();
+                    console.log(un);
+                    console.log(pwd);
+                    var settings = {
+                        "url": "http://localhost:8080/authenticate",
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                          "Content-Type": "application/json"
+                        },
+                        "data": JSON.stringify({"username":un,"password":pwd}),
+                        "error": function(resp){
+                            var msg = resp.responseJSON.error;
+                            console.log(msg);
+                            alert(msg);
+                        }
+                   };
+    
+                   $.ajax(settings).done(function (response) {
+                      console.log(response.token);
+                      window.localStorage.setItem("token",response.token);
+                      window.location = "index.html";
+                   });
+                });
+                }else{
+                    window.location = "index.html";
+                }
+
+            });
+
+        </script>
+    </body>
+</html>

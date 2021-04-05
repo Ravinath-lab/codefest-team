@@ -1,4 +1,9 @@
-const host = "http://104.198.28.198:8080/";
+const host = "http://localhost:8080/";
+var token = window.localStorage.getItem("token");
+if(token === null || token === ""){
+     window.location = "login.html";
+}else{
+    console.log(token);
 $(document).ready(function(){
     readCategory();
     readUsers();
@@ -23,7 +28,8 @@ $(document).ready(function(){
             "method": "POST",
             "timeout": 0,
             "headers": {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "Authorization": "AUTH="+token
             },
             "data": JSON.stringify(user),
           };
@@ -60,7 +66,8 @@ $(document).ready(function(){
             "method": "PUT",
             "timeout": 0,
             "headers": {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "Authorization": "AUTH="+token
             },
             "data": JSON.stringify(user)
           };
@@ -97,6 +104,7 @@ $(document).ready(function(){
             "method": "POST",
             "timeout": 0,
             "headers": {
+                "Authorization": "AUTH="+token,
               "Content-Type": "application/json"
             },
             "data": JSON.stringify(pro),
@@ -134,6 +142,7 @@ $(document).ready(function(){
             "method": "PUT",
             "timeout": 0,
             "headers": {
+                "Authorization": "AUTH="+token,
               "Content-Type": "application/json"
             },
             "data": JSON.stringify(pro),
@@ -164,6 +173,7 @@ $(document).ready(function(){
             "method": "POST",
             "timeout": 0,
             "headers": {
+                "Authorization": "AUTH="+token,
               "Content-Type": "application/json"
             },
             "data": JSON.stringify(cat),
@@ -192,6 +202,7 @@ $(document).ready(function(){
             "method": "PUT",
             "timeout": 0,
             "headers": {
+                "Authorization": "AUTH="+token,
               "Content-Type": "application/json"
             },
             "data": JSON.stringify(cat),
@@ -214,7 +225,12 @@ function readUsers(){
     var settings = {
         "url": host+"user/getAll",
         "method": "GET",
-        "timeout": 0
+        "timeout": 0,
+        
+        "headers": {
+            "Content-Type": "application/json",
+             "Authorization": "AUTH="+token.trim()
+             }
       };
 
     $.ajax(settings).done(function (response) {
@@ -245,7 +261,11 @@ function loadUsers(data){
         var settings = {
             "url": host+"user/get/"+id,
             "method": "GET",
-            "timeout": 0
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json",
+                    "Authorization": "AUTH="+token
+                    }
           };
 
           $.ajax(settings).done(function (response) {
@@ -263,7 +283,11 @@ function loadUsers(data){
             var settings = {
                 "url": host+"user/delete/"+id,
                 "method": "DELETE",
-                "timeout": 0
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "AUTH="+token
+                    }
               };
 
               $.ajax(settings).done(function (response) {
@@ -284,7 +308,11 @@ function readProducts(){
     var settings = {
         "url": host+"product/getAll",
         "method": "GET",
-        "timeout": 0
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json",
+                    "Authorization": "AUTH="+token
+                    }
       };
 
     $.ajax(settings).done(function (response) {
@@ -315,7 +343,11 @@ function loadPros(data){
         var settings = {
             "url": host+"product/get/"+id,
             "method": "GET",
-            "timeout": 0
+            "timeout": 0,
+            "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "AUTH="+token
+                    }
           };
 
           $.ajax(settings).done(function (response) {
@@ -334,7 +366,11 @@ function loadPros(data){
             var settings = {
                 "url": host+"product/delete/"+id,
                 "method": "DELETE",
-                "timeout": 0
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "AUTH="+token
+                    }
               };
 
               $.ajax(settings).done(function (response) {
@@ -354,7 +390,11 @@ function readCategory(){
     var settings = {
         "url": host+"productCategory/getAll",
         "method": "GET",
-        "timeout": 0
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json",
+                    "Authorization": "AUTH="+token
+                    }
       };
 
     $.ajax(settings).done(function (response) {
@@ -392,7 +432,11 @@ function loadCategories(data){
         var settings = {
             "url": host+"productCategory/get/"+id,
             "method": "GET",
-            "timeout": 0
+            "timeout": 0,     
+            "headers": {
+                "Content-Type": "application/json",
+                    "Authorization": "AUTH="+token
+                    }
           };
 
           $.ajax(settings).done(function (response) {
@@ -408,7 +452,11 @@ function loadCategories(data){
             var settings = {
                 "url": host+"productCategory/deactivate/"+id,
                 "method": "PUT",
-                "timeout": 0
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "AUTH="+token
+                    }
               };
 
               $.ajax(settings).done(function (response) {
@@ -417,6 +465,7 @@ function loadCategories(data){
               });
         }
     });
+}
 }
 
 
